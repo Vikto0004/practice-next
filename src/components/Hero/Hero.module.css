@@ -1,0 +1,17 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  color: #333;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding-bottom: 30px;
+}
+
+.featureItem {
+  margin-bottom: 1rem;
+}
+
+.featureItem h3 {
+  color: #007bff;
+}
