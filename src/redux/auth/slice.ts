@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { refreshUser, registerUser } from './operations';
+import { createSlice } from '@reduxjs/toolkit';
+import { logInUser, logOutUser, refreshUser, registerUser } from './operations';
 
 type User = {
   name: string | null;
@@ -48,6 +48,47 @@ const authSlice = createSlice({
     builder.addCase(registerUser.rejected, (state, action) => {
       state.loading = false;
       state.isLoggedIn = false;
+      if (typeof action.payload === 'string') {
+        state.error = action.payload;
+      } else {
+        state.error = 'Oops, something went wrong, try reloading the page';
+      }
+    });
+    builder.addCase(logInUser.pending, state => {
+      state.loading = true;
+      state.isLoggedIn = false;
+      state.error = null;
+    });
+    builder.addCase(logInUser.fulfilled, (state, action) => {
+      const { token, user } = action.payload;
+      state.loading = false;
+      state.isLoggedIn = true;
+      state.user.name = user.name;
+      state.user.email = user.email;
+      state.token = token;
+    });
+    builder.addCase(logInUser.rejected, (state, action) => {
+      state.loading = false;
+      state.isLoggedIn = false;
+      if (typeof action.payload === 'string') {
+        state.error = action.payload;
+      } else {
+        state.error = 'Oops, something went wrong, try reloading the page';
+      }
+    });
+    builder.addCase(logOutUser.pending, state => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(logOutUser.fulfilled, state => {
+      state.loading = false;
+      state.isLoggedIn = false;
+      state.user.name = null;
+      state.user.email = null;
+      state.token = null;
+    });
+    builder.addCase(logOutUser.rejected, (state, action) => {
+      state.loading = false;
       if (typeof action.payload === 'string') {
         state.error = action.payload;
       } else {

@@ -4,9 +4,12 @@ import React, { useId } from 'react';
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
+import { logInUser } from '@/redux/auth/operations';
+import { useAppDispatch } from '@/redux/hooks';
 
 export default function LoginForm() {
   const id: string = useId();
+  const dispatch = useAppDispatch();
 
   type FormValues = {
     email: string;
@@ -17,7 +20,7 @@ export default function LoginForm() {
     values: FormValues,
     actions: FormikHelpers<FormValues>
   ) => {
-    console.log(values);
+    dispatch(logInUser(values));
     actions.resetForm();
   };
 
