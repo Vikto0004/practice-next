@@ -3,6 +3,9 @@ import { Inter } from 'next/font/google';
 import './styles/globals.css';
 import Header from '@/components/Header/Header';
 import StoreProvider from './StoreProvider';
+import { refreshUser } from '@/redux/auth/operations';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import Refreshing from '@/components/Refreshing/Refreshing';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,8 +23,10 @@ export default function RootLayout({
     <html>
       <body>
         <StoreProvider>
-          <Header />
-          <main>{children}</main>
+          <Refreshing>
+            <Header />
+            <main>{children}</main>
+          </Refreshing>
         </StoreProvider>
       </body>
     </html>

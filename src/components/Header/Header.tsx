@@ -9,11 +9,6 @@ import { refreshUser } from '@/redux/auth/operations';
 export default function Header() {
   const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
   const userName = useAppSelector(state => state.auth.user.name);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
 
   return (
     <header className={css.header}>
