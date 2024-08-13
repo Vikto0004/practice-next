@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
@@ -12,6 +13,7 @@ axios.defaults.baseURL = 'https://connections-api.goit.global';
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  Cookies.set('token', token, { expires: 7 });
 };
 
 export const registerUser = createAsyncThunk(
@@ -56,8 +58,6 @@ export const logOutUser = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   '/auth/refresh',
   async (_, thunkAPI) => {
-    console.log(34);
-
     const reduxState: RootState = thunkAPI.getState() as RootState;
     if (typeof reduxState.auth.token === 'string') {
       setAuthHeader(reduxState.auth.token);
