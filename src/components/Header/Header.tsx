@@ -1,23 +1,40 @@
+'use client';
+
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import NavLink from '../NavLink/NavLink';
 import css from './Header.module.css';
+import { useEffect } from 'react';
+import { refreshUser } from '@/redux/auth/operations';
 
 export default function Header() {
+  const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
+  const userName = useAppSelector(state => state.auth.user.name);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <header className={css.header}>
       <div className={css.wrap}>
         <NavLink href="/">Home</NavLink>
-        <NavLink href="/contacts">Contacts</NavLink>
+        {isLoggedIn && <NavLink href="/contacts">Contacts</NavLink>}
       </div>
-      <div className={css.wrap}>
-        <NavLink href="/register">Register</NavLink>
-        <NavLink href="/login">Log In</NavLink>
-      </div>
-      <div className={css.wrap}>
-        <p className={css.text}>Hello, {'name'}!</p>
-        <button className={css.button} type="button">
-          Logout
-        </button>
-      </div>
+      {!isLoggedIn && (
+        <div className={css.wrap}>
+          <NavLink href="/register">Register</NavLink>
+          <NavLink href="/login">Log In</NavLink>
+        </div>
+      )}
+      {isLoggedIn && (
+        <div className={css.wrap}>
+          <p className={css.text}>Hello, {userName}!</p>
+          <button className={css.button} type="button">
+            Logout
+          </button>
+        </div>
+      )}
     </header>
   );
 }

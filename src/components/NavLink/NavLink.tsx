@@ -9,7 +9,7 @@ interface NavLinkProps {
   children: React.ReactNode;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
+export default function NavLink({ href, children }: NavLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -18,6 +18,4 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
       {children}
     </Link>
   );
-};
-
-export default NavLink;
+}
