@@ -3,6 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import css from './NavLink.module.css';
+import StoreProvider from '@/app/StoreProvider';
+import Header from '../Header/Header';
+import Refreshing from '../Refreshing/Refreshing';
 
 interface NavLinkProps {
   href: string;

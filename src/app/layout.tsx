@@ -5,6 +5,11 @@ import StoreProvider from './StoreProvider';
 import Refreshing from '@/components/Refreshing/Refreshing';
 import './styles/globals.css';
 
+import Loader from '@/app/loading';
+import { refreshUser } from '@/redux/auth/operations';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useEffect } from 'react';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -21,10 +26,10 @@ export default function RootLayout({
     <html>
       <body>
         <StoreProvider>
-          <Refreshing>
-            <Header />
-            <main>{children}</main>
-          </Refreshing>
+          {/* <Refreshing> */}
+          <Header />
+          <main>{children}</main>
+          {/* </Refreshing> */}
         </StoreProvider>
       </body>
     </html>

@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useId } from 'react';
+import React, { useActionState, useId } from 'react';
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
 import { logInUser } from '@/redux/auth/operations';
 import { useAppDispatch } from '@/redux/hooks';
+import { createSession } from '@/lib/session';
+import { signup } from '@/app/actions/auth';
 
 export default function LoginForm() {
   const id: string = useId();
@@ -14,14 +16,6 @@ export default function LoginForm() {
   type FormValues = {
     email: string;
     password: string;
-  };
-
-  const handleSubmit = (
-    values: FormValues,
-    actions: FormikHelpers<FormValues>
-  ) => {
-    dispatch(logInUser(values));
-    actions.resetForm();
   };
 
   const loginSchema = Yup.object().shape({
@@ -35,50 +29,81 @@ export default function LoginForm() {
       .required('Required'),
   });
 
+  const [state, action, pending] = useActionState(signup, undefined);
+
   return (
-    <Formik
-      initialValues={{
-        email: '',
-        password: '',
-      }}
-      onSubmit={handleSubmit}
-      validationSchema={loginSchema}
-    >
-      <Form className={css.form}>
-        <div className={css.wrpap}>
-          <ErrorMessage className={css.error} name="email" component="span" />
-          <Field
-            className={css.input}
-            type="email"
-            name="email"
-            placeholder=""
-            id={`email${id}`}
-          />
-          <label className={css.label} htmlFor={`email${id}`}>
-            Email
-          </label>
+    <form action={signup}>
+      <div>
+        <label htmlFor="name">Name</label>
+        <input id="name" name="name" placeholder="Name" />
+      </div>
+      {state?.errors?.name && <p>{state.errors.name}</p>}
+      <div>
+        <label htmlFor="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Email" />
+      </div>
+      {state?.errors?.email && <p>{state.errors.email}</p>}
+      <div>
+        <label htmlFor="password">Password</label>
+        <input id="password" name="password" type="password" />
+      </div>
+      {state?.errors?.password && (
+        <div>
+          <p>Password must:</p>
+          <ul>
+            {state.errors.password.map(error => (
+              <li key={error}>- {error}</li>
+            ))}
+          </ul>
         </div>
-        <div className={css.wrpap}>
-          <ErrorMessage
-            className={css.error}
-            name="password"
-            component="span"
-          />
-          <Field
-            className={css.input}
-            type="password"
-            name="password"
-            placeholder=""
-            id={`password${id}`}
-          />
-          <label className={css.label} htmlFor={`password${id}`}>
-            Password
-          </label>
-        </div>
-        <button className={css.button} type="submit">
-          Log In
-        </button>
-      </Form>
-    </Formik>
+      )}
+      <button aria-disabled={pending} type="submit">
+        {pending ? 'Submitting...' : 'Sign up'}
+      </button>
+    </form>
+    // <Formik
+    //   initialValues={{
+    //     email: '',
+    //     password: '',
+    //   }}
+    //   onSubmit={handleSubmit}
+    //   validationSchema={loginSchema}
+    // >
+    //   <Form className={css.form}>
+    //     <div className={css.wrpap}>
+    //       <ErrorMessage className={css.error} name="email" component="span" />
+    //       <Field
+    //         className={css.input}
+    //         type="email"
+    //         name="email"
+    //         placeholder=""
+    //         id={`email${id}`}
+    //       />
+    //       <label className={css.label} htmlFor={`email${id}`}>
+    //         Email
+    //       </label>
+    //     </div>
+    //     <div className={css.wrpap}>
+    //       <ErrorMessage
+    //         className={css.error}
+    //         name="password"
+    //         component="span"
+    //       />
+    //       <Field
+    //         className={css.input}
+    //         type="password"
+    //         name="password"
+    //         placeholder=""
+    //         id={`password${id}`}
+    //       />
+    //       <label className={css.label} htmlFor={`password${id}`}>
+    //         Password
+    //       </label>
+    //     </div>
+    //     <button className={css.button} type="submit">
+    //       Log In
+    //     </button>
+    //   </Form>
+    // </Formik>
   );
 }
