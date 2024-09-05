@@ -2,7 +2,7 @@
 
 import { useAppSelector } from '@/redux/hooks';
 import Error from '../error';
-import RegisterForm from '@/components/RegisterForm/RegisterForm';
+import RegisterForm from '@/app/[locale]/components/RegisterForm/RegisterForm';
 import Loader from '../loading';
 
 export default function Register() {

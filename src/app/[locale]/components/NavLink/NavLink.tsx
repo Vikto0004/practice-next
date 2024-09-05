@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import css from './NavLink.module.css';
-import StoreProvider from '@/app/StoreProvider';
+import StoreProvider from '@/app/[locale]/StoreProvider';
 import Header from '../Header/Header';
 import Refreshing from '../Refreshing/Refreshing';
 

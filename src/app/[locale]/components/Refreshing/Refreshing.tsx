@@ -1,6 +1,6 @@
 'use client';
 
-import Loader from '@/app/loading';
+import Loader from '@/app/[locale]/loading';
 import { refreshUser } from '@/redux/auth/operations';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useEffect } from 'react';

@@ -6,10 +6,12 @@ import * as Yup from 'yup';
 import css from './RegisterForm.module.css';
 import { registerUser } from '@/redux/auth/operations';
 import { useAppDispatch } from '@/redux/hooks';
+import { useTranslations } from 'next-intl';
 
 export default function RegisterForm() {
   const id: string = useId();
   const dispatch = useAppDispatch();
+  const t = useTranslations('RegisterPage');
 
   type FormValues = {
     name: string;
@@ -27,17 +29,17 @@ export default function RegisterForm() {
 
   const registerSchema = Yup.object().shape({
     name: Yup.string()
-      .min(3, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(3, t('registerForm.tooShort'))
+      .max(50, t('registerForm.tooLong'))
+      .required(t('registerForm.required')),
     email: Yup.string()
-      .min(5, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(5, t('registerForm.tooShort'))
+      .max(50, t('registerForm.tooLong'))
+      .required(t('registerForm.required')),
     password: Yup.string()
-      .min(8, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(8, t('registerForm.tooShort'))
+      .max(50, t('registerForm.tooLong'))
+      .required(t('registerForm.required')),
   });
 
   return (
@@ -61,7 +63,7 @@ export default function RegisterForm() {
             placeholder=""
           />
           <label className={css.label} htmlFor={`name${id}`}>
-            Name
+            {t('registerForm.name')}
           </label>
         </div>
         <div className={css.wrpap}>
@@ -74,7 +76,7 @@ export default function RegisterForm() {
             id={`email${id}`}
           />
           <label className={css.label} htmlFor={`email${id}`}>
-            Email
+            {t('registerForm.email')}
           </label>
         </div>
         <div className={css.wrpap}>
@@ -91,11 +93,11 @@ export default function RegisterForm() {
             id={`password${id}`}
           />
           <label className={css.label} htmlFor={`password${id}`}>
-            Password
+            {t('registerForm.password')}
           </label>
         </div>
         <button className={css.button} type="submit">
-          Register
+          {t('registerForm.register')}
         </button>
       </Form>
     </Formik>

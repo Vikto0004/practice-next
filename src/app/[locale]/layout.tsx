@@ -1,14 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Header from '@/components/Header/Header';
+import Header from '@/app/[locale]/components/Header/Header';
 import StoreProvider from './StoreProvider';
-import Refreshing from '@/components/Refreshing/Refreshing';
 import './styles/globals.css';
 
-import Loader from '@/app/loading';
-import { refreshUser } from '@/redux/auth/operations';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { useEffect } from 'react';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,18 +14,24 @@ export const metadata: Metadata = {
   description: 'Streamline Your Contact Management',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
+  const messages = await getMessages();
+
   return (
-    <html>
+    <html lang={locale}>
       <body>
         <StoreProvider>
           {/* <Refreshing> */}
-          <Header />
-          <main>{children}</main>
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            <main>{children}</main>
+          </NextIntlClientProvider>
           {/* </Refreshing> */}
         </StoreProvider>
       </body>

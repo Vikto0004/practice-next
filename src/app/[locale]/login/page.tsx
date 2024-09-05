@@ -1,6 +1,6 @@
 'use client';
 
-import LoginForm from '@/components/LoginForm/LoginForm';
+import LoginForm from '@/app/[locale]/components/LoginForm/LoginForm';
 import Loader from '../loading';
 import { useAppSelector } from '@/redux/hooks';
 import Error from '../error';
