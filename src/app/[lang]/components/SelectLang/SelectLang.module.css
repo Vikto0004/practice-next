@@ -50,6 +50,9 @@
   font-weight: 400;
   font-size: 18px;
   color: var(--text);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 .link:focus,
