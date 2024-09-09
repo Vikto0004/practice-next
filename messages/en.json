@@ -1,49 +1,18 @@
 {
-  "HomePage": {
-    "header": {
-      "home": "Home",
-      "register": "Register",
-      "login": "Login"
+  "Header": {
+    "home": "Home",
+    "cooperationFund": {
+      "title": "Cooperation with the fund",
+      "joinTeam": "Join the team",
+      "requestsOffers": "Requests and offers",
+      "helpFund": "Help the fund"
     },
-    "hero": {
-      "title": "Welcome to ContactMaster",
-      "subtitle": "Streamline Your Contact Management"
-    },
-    "keyFeatures": {
-      "title": "Key Features",
-      "features": {
-        "effortless": {
-          "title": "Effortless Contact Storage",
-          "description": "Securely store all your phone contacts in one place. Easily add, edit, and delete entries to keep your contact list up-to-date."
-        },
-        "advanced": {
-          "title": "Advanced Filtering Options",
-          "description": "Quickly find the contact you need with our powerful filtering tools. Search by name, phone number, or any custom tags you ve added to your contacts."
-        },
-        "crossDevice": {
-          "title": "Cross-Device Synchronization",
-          "description": "Access your contact list from any device, anywhere. Whether you re using your smartphone, tablet, or computer, your contacts are always synchronized and up-to-date."
-        },
-        "ourIntuitive": {
-          "title": "User-Friendly Interface",
-          "description": "Our intuitive design makes managing your contacts a breeze. Enjoy a clean, modern interface that simplifies navigation and enhances your productivity."
-        },
-        "secureAccess": {
-          "title": "Secure Access",
-          "description": "Your contact information is protected with state-of-the-art encryption and security measures. Rest easy knowing your data is safe and secure."
-        }
-      }
-    }
+    "directionsWork": "Directions of work",
+    "reports": "Reports",
+    "toSupport": "To support"
   },
-  "RegisterPage": {
-    "registerForm": {
-      "name": "Name",
-      "email": "Email",
-      "password": "Password",
-      "register": "Register",
-      "required": "Required",
-      "tooShort": "Too Short!",
-      "tooLong": "Too Long!"
-    }
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
   }
 }
