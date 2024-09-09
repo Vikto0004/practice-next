@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ReactNode } from "react";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ReactNode } from 'react';
 
-import css from "./NavLink.module.css";
+import css from './NavLink.module.css';
 
 type PropsType = {
   href: string;
@@ -16,7 +16,7 @@ export default function NavLink({ href, styles, children }: PropsType) {
   return (
     <Link
       href={href}
-      className={`${styles} ${pathName === href ? css.active : ""}`}
+      className={`${styles} ${pathName === href ? css.active : ''}`}
     >
       {children}
     </Link>

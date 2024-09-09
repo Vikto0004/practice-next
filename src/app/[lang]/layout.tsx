@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Header from '@/app/[lang]/components/Header/Header';
-import StoreProvider from './StoreProvider';
 import './styles/globals.css';
 
 import { NextIntlClientProvider } from 'next-intl';
@@ -26,12 +25,10 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <body>
-        <StoreProvider>
-          <NextIntlClientProvider messages={messages}>
-            <Header />
-            <main>{children}</main>
-          </NextIntlClientProvider>
-        </StoreProvider>
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          <main>{children}</main>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
