@@ -15,6 +15,7 @@ export default function PopoverList() {
     <Popover className={css.popover}>
       {({ open, close }) => (
         <>
+          {open && <div onClick={() => close} className={css.overlay}></div>}
           <PopoverButton className={css.popoverButton}>
             {t('cooperationFund.title')}
             <IoChevronDown

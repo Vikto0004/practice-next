@@ -16,7 +16,7 @@ export default function NavLink({ href, styles, children }: PropsType) {
   return (
     <Link
       href={href}
-      className={`${styles} ${pathName === href ? css.active : ''}`}
+      className={`${pathName === href ? css.active : ''} ${styles} `}
     >
       {children}
     </Link>

@@ -8,12 +8,11 @@ import { SiInstagram } from 'react-icons/si';
 
 import logo from '../../../../../public/svgs/logo_open-planet.svg';
 import CustomButton from '../CustomButton/CustomButton';
-import NavLink from '../NavLink/NavLink';
 import PopoverList from '../PopoverList/PopoverList';
 import SearchInput from '../SearchInput/SearchInput';
 import SelectLang from '../SelectLang/SelectLang';
-
 import css from './Header.module.css';
+import NavLink from '../NavLink/NavLink';
 
 export default function Header() {
   const { lang } = useParams();
