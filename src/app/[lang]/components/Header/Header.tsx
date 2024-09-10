@@ -1,18 +1,17 @@
 'use client';
 
-import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { FaFacebook } from 'react-icons/fa';
 import { SiInstagram } from 'react-icons/si';
 
-import logo from '../../../../../public/svgs/logo_open-planet.svg';
 import CustomButton from '../CustomButton/CustomButton';
 import PopoverList from '../PopoverList/PopoverList';
 import SearchInput from '../SearchInput/SearchInput';
 import SelectLang from '../SelectLang/SelectLang';
 import css from './Header.module.css';
 import NavLink from '../NavLink/NavLink';
+import Logo from '../Logo/Logo';
 
 export default function Header() {
   const { lang } = useParams();
@@ -21,12 +20,7 @@ export default function Header() {
   return (
     <header className={css.header}>
       <div className={css.container}>
-        <Image
-          src={logo.src}
-          alt="Logo"
-          width={logo.width}
-          height={logo.height}
-        />
+        <Logo lang={lang} />
         <nav className={css.navigate}>
           <NavLink href={`/${lang}`} styles={css.link}>
             {t('home')}

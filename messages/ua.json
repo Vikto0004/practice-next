@@ -1,5 +1,6 @@
 {
   "Header": {
+    "logo": "../../../../../public/svgs/logo_open-planet.svg",
     "home": "Головна",
     "cooperationFund": {
       "title": "Співпраця з фондом",
