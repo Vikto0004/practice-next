@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.slideItem {
+  width: 25% !important;
+}
+
+.wrap {
+  margin-bottom: 32px;
+}
+
+.swiperButtonWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 64px;
+}
+
+.swiperButton {
+  color: red;
+}
