@@ -9,9 +9,9 @@ const SearchInput = () => {
   const [value, setValue] = useState('');
 
   const props = useSpring({
-    width: isOpen ? '400px' : '0px',
+    width: isOpen ? '586px' : '0px',
     opacity: isOpen ? 1 : 0,
-    padding: isOpen ? '10px' : '0px',
+    padding: isOpen ? '17px' : '0px',
     config: { duration: 300 },
   });
 

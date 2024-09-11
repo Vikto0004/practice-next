@@ -15,7 +15,7 @@ import Logo from '../Logo/Logo';
 
 export default function Header() {
   const { lang } = useParams();
-  const t = useTranslations('Header');
+  const translate = useTranslations('Header');
 
   return (
     <header className={css.header}>
@@ -23,14 +23,17 @@ export default function Header() {
         <Logo lang={lang} />
         <nav className={css.navigate}>
           <NavLink href={`/${lang}`} styles={css.link}>
-            {t('home')}
+            {translate('home')}
           </NavLink>
           <PopoverList />
           <NavLink href={`/${lang}/lignes-of-work`} styles={css.link}>
-            {t('directionsWork')}
+            {translate('directionsWork')}
+          </NavLink>
+          <NavLink href={`/${lang}/news`} styles={css.link}>
+            {translate('news')}
           </NavLink>
           <NavLink href={`/${lang}/reports`} styles={css.link}>
-            {t('reports')}
+            {translate('reports')}
           </NavLink>
         </nav>
         <div className={css.wrapper}>
@@ -53,7 +56,10 @@ export default function Header() {
             </a>
           </div>
           <div className={css.wrapButton}>
-            <CustomButton link="/payment-by-card" text={t('toSupport')} />
+            <CustomButton
+              link="/payment-by-card"
+              text={translate('toSupport')}
+            />
           </div>
         </div>
       </div>

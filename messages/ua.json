@@ -3,12 +3,13 @@
     "logo": "../../../../../public/svgs/logo_open-planet.svg",
     "home": "Головна",
     "cooperationFund": {
-      "title": "Співпраця з фондом",
+      "title": "Співпраця",
       "joinTeam": "Долучитися до команди",
-      "requestsOffers": "Запити та пропозиції",
+      "requestsOffers": "Запити на пропозиції",
       "helpFund": "Допомогти фонду"
     },
     "directionsWork": "Напрямки роботи",
+    "news": "Новини",
     "reports": "Звіти",
     "toSupport": "Підтримати"
   },
