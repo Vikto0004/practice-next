@@ -12,7 +12,9 @@
     "toSupport": "To support"
   },
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "directionsWork": {
+      "title": "Areas of work of the fund",
+      "button": "To areas of work"
+    }
   }
 }

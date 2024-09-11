@@ -13,7 +13,9 @@
     "toSupport": "Підтримати"
   },
   "HomePage": {
-    "title": "Привіт світу!",
-    "about": "Go to the about page"
+    "directionsWork": {
+      "title": "Напрямки роботи фонду",
+      "button": "До напрямків роботи"
+    }
   }
 }
