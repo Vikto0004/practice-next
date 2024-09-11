@@ -2,9 +2,8 @@
 
 import Image from 'next/image';
 import Section from '../Section/Section';
-import BackgroundImage from '@public/BackgroundImage/Banner.webp';
 import { montserrat, playfairDisplay } from '../fonts';
-
+import BackgroundImage from '@public/BackgroundImage/Banner.webp';
 import style from './Hero.module.css';
 
 const Hero = () => {
