@@ -1,22 +1,18 @@
 'use client';
 
+import Image from 'next/image';
+import { useParams } from 'next/navigation';
+import { LuArrowLeft, LuArrowRight } from 'react-icons/lu';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import { useRouter } from '@/i18n/routing';
 import directionsWorkUa from '@/db-local/directions_work-ua.json';
 import directionsWorkEn from '@/db-local/directions_work-en.json';
 
-import Image from 'next/image';
 import css from './DirectionsWorkList.module.css';
 import './DirectionsWorkSwiper.css';
-
-import { LuArrowLeft, LuArrowRight } from 'react-icons/lu';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useRouter } from '@/i18n/routing';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-import { Navigation } from 'swiper/modules';
-import { useParams } from 'next/navigation';
 
 export default function DirectionsWorkList() {
   const { lang } = useParams();

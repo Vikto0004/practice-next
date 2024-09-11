@@ -9,9 +9,9 @@ import CustomButton from '../CustomButton/CustomButton';
 import PopoverList from '../PopoverList/PopoverList';
 import SearchInput from '../SearchInput/SearchInput';
 import SelectLang from '../SelectLang/SelectLang';
-import css from './Header.module.css';
 import NavLink from '../NavLink/NavLink';
 import Logo from '../Logo/Logo';
+import css from './Header.module.css';
 
 export default function Header() {
   const { lang } = useParams();
