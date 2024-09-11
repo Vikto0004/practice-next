@@ -9,8 +9,8 @@ import { getMessages } from 'next-intl/server';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Contact Master',
-  description: 'Streamline Your Contact Management',
+  title: 'Open Planet',
+  description: 'Charitable Foundation “Open Plant UA”',
 };
 
 export default async function RootLayout({
