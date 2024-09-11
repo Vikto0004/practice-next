@@ -1,6 +1,6 @@
-import { useSpring, animated } from '@react-spring/web';
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
+import { useSpring, animated } from '@react-spring/web';
 
 import css from './SearchInput.module.css';
 

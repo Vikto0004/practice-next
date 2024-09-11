@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Header from '@/app/[lang]/components/Header/Header';
-import './styles/globals.css';
-
-import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import Header from '@/app/[lang]/components/Header/Header';
+import Hero from './components/Hero/Hero';
+import './styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,10 +16,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
   params: { lang },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { lang: string };
-}>) {
+}: Readonly<{ children: React.ReactNode; params: { lang: string } }>) {
   const messages = await getMessages();
 
   return (
@@ -27,7 +24,10 @@ export default async function RootLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main>{children}</main>
+          <main>
+            <Hero />
+            {children}
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>
